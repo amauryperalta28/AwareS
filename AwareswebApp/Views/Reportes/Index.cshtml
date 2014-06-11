@@ -1,0 +1,135 @@
+﻿@model IEnumerable<AwareswebApp.Models.Reporte>
+@using Microsoft.Ajax.Utilities
+
+@{
+    ViewBag.Title = "Reportes";
+}
+
+<h2>Lista de Reportes</h2>
+
+<div id="map_canvas" style="width: 540px; height: 360px;border-style:solid;border-width:5px;border-color:ActiveBorder">  </div>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.numReporteUsr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.situacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ubicacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.longitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.latitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FotoUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comentarios)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaCreacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaCorreccion)
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.numReporteUsr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.situacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ubicacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.longitud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.latitud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FotoUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comentarios)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaCreacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaCorreccion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.numReporte }) |
+            @Html.ActionLink("Details", "Details", new { id=item.numReporte }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.numReporte })
+        </td>
+    </tr>
+}
+
+</table>
+@Scripts.Render("~/bundles/jquery")
+<div id="map_canvas" style="width: 540px; height: 360px;border-style:solid;border-width:5px;border-color:ActiveBorder">  </div>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        initialize();
+    });
+    function initialize() {
+        
+        var latitud = '@ViewBag.Latitud';
+        var longitud = '@ViewBag.Longitud';
+
+        var mapOptions = {
+            center: new google.maps.LatLng(latitud, longitud),
+            zoom: 11,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        google.maps.visualRefresh = true;
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+          mapOptions);
+
+           
+        var latlng = new google.maps.LatLng(latitud, longitud);
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            title: 'Averia!'
+        });
+
+        
+        }
+        
+</script>  
