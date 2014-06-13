@@ -22,8 +22,12 @@ namespace AwareswebApp.Controllers
         public ActionResult Index()
         {
             var listaReportes = (db.Reportes.ToList());
+
+           
+            
             ViewBag.Latitud = 18.523471;
             ViewBag.Longitud = -69.8746229;
+            ViewBag.coordenadas = listaReportes;
 
                          
             return View(listaReportes);
@@ -44,13 +48,13 @@ namespace AwareswebApp.Controllers
             return View(reporte);
         }
 
-        public string Crear(int numReporteUsr, int idUsuario, string situacion, double longitud, double latitud)
+        public void Crear(int numReporteUsr, int idUsuario, string situacion, double longitud, double latitud)
         {
             Reporte report = new Reporte(numReporteUsr,idUsuario,situacion,longitud,latitud);
             db.Reportes.Add(report);
             db.SaveChanges();
 
-            return "1";
+            
         }
         // GET: Reportes/Create
         public ActionResult Create()

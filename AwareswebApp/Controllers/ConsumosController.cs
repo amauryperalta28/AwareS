@@ -15,14 +15,13 @@ namespace AwareswebApp.Controllers
         private DbModels db = new DbModels();
 
         // GET: Consumos
-        public string Receive(int idColaborador, string lecturaConsumo)
+        public void Receive(int idColaborador, string lecturaConsumo)
         {
             Consumo consumo = new Consumo(idColaborador, lecturaConsumo);
 
             db.Consumos.Add(consumo);
             db.SaveChanges();
-
-            return "1";
+            
         }
 
         public ActionResult Menu()

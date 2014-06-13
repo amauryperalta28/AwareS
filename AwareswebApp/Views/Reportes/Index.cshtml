@@ -108,7 +108,8 @@
         initialize();
     });
     function initialize() {
-        
+
+        var coordenada =  @Html.Raw(Json.Encode(@ViewBag.coordenadas));
         var latitud = '@ViewBag.Latitud';
         var longitud = '@ViewBag.Longitud';
 
@@ -121,15 +122,24 @@
         var map = new google.maps.Map(document.getElementById("map_canvas"),
           mapOptions);
 
-           
-        var latlng = new google.maps.LatLng(latitud, longitud);
-        var marker = new google.maps.Marker({
-            position: latlng,
-            map: map,
-            title: 'Averia!'
+
+        //var latlng = new google.maps.LatLng(latitud, longitud);
+        //var marker = new google.maps.Marker({
+        //    position: latlng,
+        //    map: map,
+        //    title: 'Averia!'
+        //});
+
+        coordenada.forEach(function (entry) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(entry.latitud, entry.longitud),
+                map: map,
+                title: entry.situacion
+                
+            });
         });
 
-        
-        }
-        
+
+    }
+
 </script>  
