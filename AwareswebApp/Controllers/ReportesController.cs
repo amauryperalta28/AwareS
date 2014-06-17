@@ -23,8 +23,6 @@ namespace AwareswebApp.Controllers
         {
             var listaReportes = (db.Reportes.ToList());
 
-           
-            
             ViewBag.Latitud = 18.523471;
             ViewBag.Longitud = -69.8746229;
             ViewBag.coordenadas = listaReportes;
@@ -50,9 +48,28 @@ namespace AwareswebApp.Controllers
 
         public void Crear(int numReporteUsr, int idUsuario, string situacion, double longitud, double latitud)
         {
-            Reporte report = new Reporte(numReporteUsr,idUsuario,situacion,longitud,latitud);
-            db.Reportes.Add(report);
-            db.SaveChanges();
+            /* Se verifica si hay un reporte del usuario con 
+             * el numReporteUsr que se quiere agegar al reporte*/
+            var reporte = (from n in db.Reportes
+                          where n.idUsuario == idUsuario &&
+                                n.numReporteUsr == numReporteUsr
+                          select n);
+           /**
+            * Se verifica si el colaborador que hace el reporte existe
+            */
+            var colab = (from n in db.Colaboradores
+                         where n.idColaborador == idUsuario
+                         select n);
+            /**
+             *  Si no se encontro el reporte y el colaborador existe, crea uno nuevo
+             */
+            if (reporte.Count() == 0 && colab.Count()>0 )
+            {
+                Reporte report = new Reporte(numReporteUsr, idUsuario, situacion, longitud, latitud);
+                db.Reportes.Add(report);
+                db.SaveChanges();
+            }
+            
 
             
         }

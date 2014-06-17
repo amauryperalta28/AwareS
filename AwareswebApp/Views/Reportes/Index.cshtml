@@ -137,6 +137,11 @@
                 title: entry.situacion
                 
             });
+
+            google.maps.event.addListener(marker, 'click', function() {
+                map.setZoom(20);
+                map.setCenter(new google.maps.LatLng(entry.latitud, entry.longitud));
+            });
         });
 
 

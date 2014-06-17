@@ -39,13 +39,22 @@ namespace AwareswebApp.Controllers
             return View(colaborador);
         }
         // GET: Colaboradores/Create
-        public string Crear(string usuario, string email, string password)
+        public void Crear(string usuario, string email, string password)
         {
-            Colaborador colab = new Colaborador(usuario, email, password);
-            db.Colaboradores.Add(colab);
-            db.SaveChanges();
+            // Se verifica si el usuario existe
+            var user = from n in db.Colaboradores
+                       where n.nombreUsuario == usuario
+                       select n;
 
-            return "1";
+            // Si el usuario no existe, crealo
+            if (user == null)
+            {
+                Colaborador colab = new Colaborador(usuario, email, password);
+                db.Colaboradores.Add(colab);
+                db.SaveChanges();
+            }
+
+           
         }
 
         // GET: Colaboradores/Create
