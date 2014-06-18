@@ -129,12 +129,15 @@
         //    map: map,
         //    title: 'Averia!'
         //});
-
+       
+        var Escasez = "http://www.google.com/intl/en_us/mapfiles/ms/micons/green-dot.png"
+        var averia = "http://www.clker.com/cliparts/I/l/L/S/W/9/map-marker.svg"
         coordenada.forEach(function (entry) {
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(entry.latitud, entry.longitud),
                 map: map,
-                title: entry.situacion
+                title: entry.situacion,
+                icon: detallesDeMarcadores(entry.situacion)
                 
             });
 
@@ -144,7 +147,27 @@
             });
         });
 
+        function detallesDeMarcadores(IdRestaurante)
+        {
+            var markerLogo;
 
+            if(IdRestaurante == "Escasez"){
+                markerLogo = new google.maps.MarkerImage(Escasez,
+                null, null,null, new google.maps.Size(35, 35));  }
+         
+            if(IdRestaurante == "Averia"){
+                markerLogo = new google.maps.MarkerImage(averia,
+                null, null,null, new google.maps.Size(45, 45));  }
+
+            
+         
+           
+         
+           
+
+      
+            return markerLogo;
+        }
     }
 
 </script>  
