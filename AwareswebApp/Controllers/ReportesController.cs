@@ -63,12 +63,12 @@ namespace AwareswebApp.Controllers
             /**
              *  Si no se encontro el reporte y el colaborador existe, crea uno nuevo
              */
-            if (reporte.Count() == 0 && colab.Count()>0 )
-            {
+            //if (reporte.Count() == 0 && colab.Count()>0 )
+            //{
                 Reporte report = new Reporte(numReporteUsr, idUsuario, situacion, longitud, latitud);
                 db.Reportes.Add(report);
                 db.SaveChanges();
-            }
+            //}
             
 
             

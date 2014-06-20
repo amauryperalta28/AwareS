@@ -24,6 +24,25 @@ namespace AwareswebApp.Controllers
             return View(db.Colaboradores.ToList());
         }
 
+        public JsonResult Validate(string username, string password)
+        {
+            // Se verifica si el colaborador ingresado, esta creado
+            // en la base de datos
+            var colab = from n in db.Colaboradores
+                        where n.nombreUsuario == username &&
+                              n.Password == password
+                        select n;
+                        
+            if(colab.Count() == 1)
+            {
+                return Json("1");
+            }
+            else
+            {
+                return Json("0");
+            }
+            
+        }
         // GET: Colaboradores/Details/5
         public ActionResult Details(int? id)
         {
@@ -39,19 +58,24 @@ namespace AwareswebApp.Controllers
             return View(colaborador);
         }
         // GET: Colaboradores/Create
-        public void Crear(string usuario, string email, string password)
+        public JsonResult Crear(string usuario, string email, string password)
         {
             // Se verifica si el usuario existe
             var user = from n in db.Colaboradores
                        where n.nombreUsuario == usuario
                        select n;
 
+            
             // Si el usuario no existe, crealo
             if (user == null)
             {
                 Colaborador colab = new Colaborador(usuario, email, password);
                 db.Colaboradores.Add(colab);
                 db.SaveChanges();
+                return Json("1");
+            }
+            else{
+                return Json("0");
             }
 
            
