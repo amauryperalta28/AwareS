@@ -35,11 +35,11 @@ namespace AwareswebApp.Controllers
                         
             if(colab.Count() == 1)
             {
-                return Json("1");
+                return Json("1", JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return Json("0");
+                return Json("0", JsonRequestBehavior.AllowGet);
             }
             
         }
@@ -67,15 +67,16 @@ namespace AwareswebApp.Controllers
 
             
             // Si el usuario no existe, crealo
-            if (user == null)
+            if (user.Count() == 0)
             {
                 Colaborador colab = new Colaborador(usuario, email, password);
                 db.Colaboradores.Add(colab);
                 db.SaveChanges();
-                return Json("1");
+                
+                return Json("1", JsonRequestBehavior.AllowGet);
             }
             else{
-                return Json("0");
+                return Json("0", JsonRequestBehavior.AllowGet);
             }
 
            
