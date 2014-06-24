@@ -35,11 +35,11 @@ namespace AwareswebApp.Controllers
                         
             if(colab.Count() == 1)
             {
-                return Json("1", JsonRequestBehavior.AllowGet);
+                return Json(1, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return Json("0", JsonRequestBehavior.AllowGet);
+                return Json(0, JsonRequestBehavior.AllowGet);
             }
             
         }
@@ -73,10 +73,10 @@ namespace AwareswebApp.Controllers
                 db.Colaboradores.Add(colab);
                 db.SaveChanges();
                 
-                return Json("1", JsonRequestBehavior.AllowGet);
+                return Json(1, JsonRequestBehavior.AllowGet);
             }
             else{
-                return Json("0", JsonRequestBehavior.AllowGet);
+                return Json(0, JsonRequestBehavior.AllowGet);
             }
 
            
