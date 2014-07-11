@@ -178,6 +178,14 @@
     <Compile Include="Migrations\201406062209582_cambiandoModeloReportes.Designer.cs">
       <DependentUpon>201406062209582_cambiandoModeloReportes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407091656386_cambiosReportesModel.cs" />
+    <Compile Include="Migrations\201407091656386_cambiosReportesModel.Designer.cs">
+      <DependentUpon>201407091656386_cambiosReportesModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407092151323_cambiosConsumosModel.cs" />
+    <Compile Include="Migrations\201407092151323_cambiosConsumosModel.Designer.cs">
+      <DependentUpon>201407092151323_cambiosConsumosModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Colaborador.cs" />
@@ -278,6 +286,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201406062209582_cambiandoModeloReportes.resx">
       <DependentUpon>201406062209582_cambiandoModeloReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407091656386_cambiosReportesModel.resx">
+      <DependentUpon>201407091656386_cambiosReportesModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407092151323_cambiosConsumosModel.resx">
+      <DependentUpon>201407092151323_cambiosConsumosModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

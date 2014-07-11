@@ -20,7 +20,7 @@ namespace AwareswebApp
             );
             routes.MapRoute(
                 name: "RecepcionConsumo",
-                url: "{controller}/{action}/{idColaborador}/{lecturaConsumo}/{tipoConsumo}/{Fecha}",
+                url: "{controller}/{action}/{userNameColaborador}/{lecturaConsumo}/{tipoConsumo}/{Fecha}",
                  defaults: new { controller = "consumos", action = "Receive" }
             );
             routes.MapRoute(
@@ -30,7 +30,7 @@ namespace AwareswebApp
                       
             routes.MapRoute(
                 name: "Creacionreportes",
-                url: "{controller}/{action}/{numReporteUsr}/{idUsuario}/{situacion}/{longitud}/{latitud}"
+                url: "{controller}/{action}/{numReporteUsr}/{userName}/{situacion}/{longitud}/{latitud}"
       );
             routes.MapRoute(
                  name: "ValidacionColaborador",

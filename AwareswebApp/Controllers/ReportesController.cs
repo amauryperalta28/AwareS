@@ -46,26 +46,26 @@ namespace AwareswebApp.Controllers
             return View(reporte);
         }
 
-        public void Crear(int numReporteUsr, int idUsuario, string situacion, double longitud, double latitud)
+        public void Crear(int numReporteUsr, string userName, string situacion, double longitud, double latitud)
         {
             /* Se verifica si hay un reporte del usuario con 
              * el numReporteUsr que se quiere agegar al reporte*/
             var reporte = (from n in db.Reportes
-                          where n.idUsuario == idUsuario &&
+                          where n.userName == userName &&
                                 n.numReporteUsr == numReporteUsr
                           select n);
            /**
             * Se verifica si el colaborador que hace el reporte existe
             */
-            var colab = (from n in db.Colaboradores
-                         where n.idColaborador == idUsuario
-                         select n);
+            //var colab = (from n in db.Colaboradores
+            //             where n.idColaborador == idUsuario
+            //             select n);
             /**
              *  Si no se encontro el reporte y el colaborador existe, crea uno nuevo
              */
             //if (reporte.Count() == 0 && colab.Count()>0 )
             //{
-                Reporte report = new Reporte(numReporteUsr, idUsuario, situacion, longitud, latitud);
+                Reporte report = new Reporte(numReporteUsr, userName, situacion, longitud, latitud);
                 db.Reportes.Add(report);
                 db.SaveChanges();
             //}
@@ -84,7 +84,7 @@ namespace AwareswebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "numReporte,numReporteUsr,idUsuario,situacion,longitud,latitud")] Reporte reporte)
+        public ActionResult Create([Bind(Include = "numReporte,numReporteUsr,userName,situacion,longitud,latitud")] Reporte reporte)
         {
             if (ModelState.IsValid)
             {
@@ -116,7 +116,7 @@ namespace AwareswebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "numReporte,numReporteUsr,idUsuario,Descripcion,situacion,ubicacion,longitud,latitud,FotoUrl,Comentarios,estatus,fechaCreacion,fechaCorreccion")] Reporte reporte)
+        public ActionResult Edit([Bind(Include = "numReporte,numReporteUsr,userName,Descripcion,situacion,ubicacion,longitud,latitud,FotoUrl,Comentarios,estatus,fechaCreacion,fechaCorreccion")] Reporte reporte)
         {
             if (ModelState.IsValid)
             {

@@ -12,7 +12,7 @@ namespace AwareswebApp.Models
         [Key]
         public int numReporte { get; set; }
         public int numReporteUsr { get; set; }
-        public int idUsuario { get; set; }
+        public string userName { get; set; }
 
         public string Descripcion { get; set; }
         public string situacion { get; set; }
@@ -27,10 +27,10 @@ namespace AwareswebApp.Models
         public DateTime fechaCreacion { get; set; }
         public DateTime fechaCorreccion { get; set; }
 
-        public Reporte(int numReporteUsr, int idUsuario, string situacion, double longitud, double latitud)
+        public Reporte(int numReporteUsr, string idUsuario, string situacion, double longitud, double latitud)
         {
             this.numReporteUsr = numReporteUsr;
-            this.idUsuario = idUsuario;
+            this.userName = idUsuario;
             this.situacion = situacion;
             this.longitud = longitud;
             this.latitud = latitud;
@@ -54,6 +54,7 @@ namespace AwareswebApp.Models
             Descripcion = "";
             FotoUrl = "";
             situacion = "";
+            
 	    }
     }
 }

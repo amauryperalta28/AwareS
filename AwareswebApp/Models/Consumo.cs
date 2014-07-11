@@ -11,15 +11,15 @@ namespace AwareswebApp.Models
 
         [Key]
         public int idConsumo { get; set; }
-        public int idColaborador { get; set; }
+        public string UsernameColaborador { get; set; }
         public string tipoConsumo { get; set; } //{diario, semanal, hora}
         public string lectura { get; set; }
         
         public DateTime fechaCreacion { get; set; }
 
-        public Consumo(int id_Colaborador, string lectura_Consumo)
+        public Consumo(string userName_Colaborador, string lectura_Consumo)
         {
-            idColaborador = id_Colaborador;
+            UsernameColaborador = userName_Colaborador;
             lectura = lectura_Consumo;
             fechaCreacion = DateTime.Now;
             tipoConsumo = "Mensual";

@@ -15,11 +15,33 @@ namespace AwareswebApp.Controllers
         private DbModels db = new DbModels();
 
         // GET: Consumos
-        public void Receive(int idColaborador, string lecturaConsumo)
+        public void Receive(string userNameColaborador, string lecturaConsumo)
         {
-            Consumo consumo = new Consumo(idColaborador, lecturaConsumo);
+            Consumo consumo = new Consumo(userNameColaborador, lecturaConsumo);
 
-            db.Consumos.Add(consumo);
+            // Se recibe las lecturas
+            String l = lecturaConsumo;
+
+            // Se separan las lecturas por usuario
+            String[] lecturas = l.Split('-');
+
+            
+            //Se recorren las lecturas
+            for (int i = 0; i < lecturas.Length; i++)
+            {
+                // Se separan los datos usuario y lectura
+                String[] datos = lecturas[i].Split(',');
+
+                Consumo c = new Consumo(datos[1], datos[0]);
+                db.Consumos.Add(c);
+                
+            }
+            
+            
+
+            
+
+            
             db.SaveChanges();
             
         }
@@ -60,7 +82,7 @@ namespace AwareswebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idConsumo,idColaborador,tipoConsumo,lectura,fechaCreacion")] Consumo consumo)
+        public ActionResult Create([Bind(Include = "idConsumo,userNameColaborador,tipoConsumo,lectura,fechaCreacion")] Consumo consumo)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +114,7 @@ namespace AwareswebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idConsumo,idColaborador,tipoConsumo,lectura,fechaCreacion")] Consumo consumo)
+        public ActionResult Edit([Bind(Include = "idConsumo,userNameColaborador,tipoConsumo,lectura,fechaCreacion")] Consumo consumo)
         {
             if (ModelState.IsValid)
             {
