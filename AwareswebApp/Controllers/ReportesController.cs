@@ -46,7 +46,7 @@ namespace AwareswebApp.Controllers
             return View(reporte);
         }
 
-        public void Crear(int numReporteUsr, string userName, string situacion, double longitud, double latitud)
+        public void Crear(int numReporteUsr, string userName, string situacion, double longitud, double latitud, string sector)
         {
             /* Se verifica si hay un reporte del usuario con 
              * el numReporteUsr que se quiere agegar al reporte*/
@@ -65,7 +65,7 @@ namespace AwareswebApp.Controllers
              */
             //if (reporte.Count() == 0 && colab.Count()>0 )
             //{
-                Reporte report = new Reporte(numReporteUsr, userName, situacion, longitud, latitud);
+                Reporte report = new Reporte(numReporteUsr, userName, situacion, longitud, latitud,sector);
                 db.Reportes.Add(report);
                 db.SaveChanges();
             //}

@@ -30,7 +30,7 @@ namespace AwareswebApp
                       
             routes.MapRoute(
                 name: "Creacionreportes",
-                url: "{controller}/{action}/{numReporteUsr}/{userName}/{situacion}/{longitud}/{latitud}"
+                url: "{controller}/{action}/{numReporteUsr}/{userName}/{situacion}/{longitud}/{latitud}/{sector}"
       );
             routes.MapRoute(
                  name: "ValidacionColaborador",

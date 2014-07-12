@@ -27,7 +27,7 @@ namespace AwareswebApp.Models
         public DateTime fechaCreacion { get; set; }
         public DateTime fechaCorreccion { get; set; }
 
-        public Reporte(int numReporteUsr, string idUsuario, string situacion, double longitud, double latitud)
+        public Reporte(int numReporteUsr, string idUsuario, string situacion, double longitud, double latitud, string sector)
         {
             this.numReporteUsr = numReporteUsr;
             this.userName = idUsuario;
@@ -38,7 +38,7 @@ namespace AwareswebApp.Models
             fechaCreacion = DateTime.Now;
             estatus = "No resuelto";
             Comentarios = " ";
-            ubicacion = "";
+            ubicacion = sector;
             Descripcion = "";
             FotoUrl = "";
 
