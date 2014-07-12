@@ -45,7 +45,24 @@ namespace AwareswebApp.Controllers
             }
             return View(reporte);
         }
+        /**
+         * Envia una lista de reportes no resueltos en formato Json
+         * 
+         * @return Lista de reportes no resueltos
+         */
+        public JsonResult getReports()
+        {
+            // Obtengo los reportes que no han sido resueltos
+            var n = from a in db.Reportes
+                    where a.estatus == "1"
+                    select a;
 
+            // Envio lista de reportes
+
+            return Json(n,JsonRequestBehavior.AllowGet);
+            
+        }
+        
         public void Crear(int numReporteUsr, string userName, string situacion, double longitud, double latitud, string sector)
         {
             /* Se verifica si hay un reporte del usuario con 

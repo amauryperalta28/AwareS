@@ -36,7 +36,7 @@ namespace AwareswebApp.Models
             this.latitud = latitud;
             fechaCorreccion = DateTime.Now.Add(new TimeSpan(7));
             fechaCreacion = DateTime.Now;
-            estatus = "No resuelto";
+            estatus = "1";
             Comentarios = " ";
             ubicacion = sector;
             Descripcion = "";
@@ -48,7 +48,7 @@ namespace AwareswebApp.Models
 	    {
             fechaCorreccion = DateTime.Now.Add(new TimeSpan(7));
             fechaCreacion = DateTime.Now;
-            estatus = "No resuelto";
+            estatus = "1";
             Comentarios = " ";
             ubicacion = "";
             Descripcion = "";
