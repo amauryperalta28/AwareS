@@ -19,10 +19,57 @@ namespace AwareswebApp.Controllers
             return View();
         }
         // GET: Reportes
-        public ActionResult Index()
+        public ActionResult Index(string tipoSituacion, string sector)
         {
-            var listaReportes = (db.Reportes.ToList());
+            // Creo una lista1, lista2 para guardar cadenas
+            var tipoSitLst = new List<string>();
+            var sectorLst = new List<string>();
 
+            //Hago query en la tabla reportes en donde obtengo los tipos de situaciones reportados y los guardo en una variable
+            var tipoSitQry = from a in db.Reportes
+                             select a.situacion;
+            //Hago query en la tabla reportes en donde obtengo los sectores en los que se han reportado situaciones y los guardo en una variable
+            var sectorQry = from a in db.Reportes
+                            select a.ubicacion;
+            // Relleno la lista con los tipos de situaciones no repetidas de los que se han hecho reportes
+            tipoSitLst.AddRange(tipoSitQry.Distinct());
+            ViewBag.tipoSituacion = new SelectList(tipoSitLst);
+
+            // Relleno la lista con los sectores no repetidos en los que se han hecho reportes
+            sectorLst.AddRange(sectorQry.Distinct());
+            ViewBag.sector = new SelectList(sectorLst);
+            // Guardo en variable los reportes del tipo y sector indicados, si se indico. Si no se indico retorno todo los reportes no resueltos
+
+            var listaReportes = from a in db.Reportes
+                                where a.estatus == "1"
+                                select a;    
+
+            if (!String.IsNullOrEmpty(tipoSituacion) && !String.IsNullOrEmpty(sector))
+            {
+                listaReportes = from a in db.Reportes
+                                where a.situacion == tipoSituacion &&
+                                      a.ubicacion == sector        &&
+                                      a.estatus == "1"
+                                select a;
+
+            }
+            else if (!String.IsNullOrEmpty(tipoSituacion))
+            {
+                 listaReportes = from a in db.Reportes
+                                where a.situacion == tipoSituacion &&
+                                      a.estatus == "1"
+                                select a;
+
+            }
+            else if (!String.IsNullOrEmpty(sector))
+            {
+                listaReportes = from  a in db.Reportes
+                                where a.ubicacion == sector &&
+                                      a.estatus == "1"
+                                     select a;
+
+            }
+            
             ViewBag.Latitud = 18.523471;
             ViewBag.Longitud = -69.8746229;
             ViewBag.coordenadas = listaReportes;

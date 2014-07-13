@@ -12,6 +12,17 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Situación: @Html.DropDownList("tipoSituacion", "All") 
+        Sector: @Html.DropDownList("sector", "All")
+        
+        <input type="submit" value="Filter" />
+    </p>
+}
+ 
 <table class="table">
     <tr>
         <th>
@@ -127,7 +138,7 @@
             });
 
             google.maps.event.addListener(marker, 'click', function() {
-                map.setZoom(20);
+                map.setZoom(18);
                 map.setCenter(new google.maps.LatLng(entry.latitud, entry.longitud));
             });
         });
@@ -154,13 +165,6 @@
                 markerLogo = new google.maps.MarkerImage(averia,
                 null, null,null, new google.maps.Size(45, 45));  }
 
-            
-         
-           
-         
-           
-
-      
             return markerLogo;
         }
     }
