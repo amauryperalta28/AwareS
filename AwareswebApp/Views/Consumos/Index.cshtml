@@ -9,6 +9,15 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Colaborador: @Html.DropDownList("ColabFilter", "All")
+        <input type="submit" value="Filter" />
+    </p>
+}
+ 
 <table class="table">
     <tr>
         <th>

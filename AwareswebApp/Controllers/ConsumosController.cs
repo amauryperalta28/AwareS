@@ -51,9 +51,27 @@ namespace AwareswebApp.Controllers
             return View();
         }
         // GET: Consumos
-        public ActionResult Index()
+        public ActionResult Index(string colabFilter)
         {
-            return View(db.Consumos.ToList());
+            // Creo una lista para guardar cadenas
+            var ColabLst = new List<string>();
+            //Hago query en la tabla consumos en donde obtengo los usuarios que han realizado consumos y los guardo en una variable
+            var ColabQry = from a in db.Consumos
+                           select a.UsernameColaborador;
+           
+            // Relleno la lista con los usuarios no repetidos que han hecho consumos
+            ColabLst.AddRange(ColabQry.Distinct());
+            ViewBag.colabFilter = new SelectList(ColabLst);
+            // Guardo en variable los consumos hechos por el usuario indicado, si se indico, si no se indico no desplego nada.
+            var colab = from a in db.Consumos
+                        select a;
+
+            if (!string.IsNullOrEmpty(colabFilter))
+            {
+                colab = colab.Where(x => x.UsernameColaborador == colabFilter);
+            }
+
+            return View(colab);
         }
 
         // GET: Consumos/Details/5
