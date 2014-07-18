@@ -78,6 +78,49 @@ namespace AwareswebApp.Controllers
             return View(listaReportes);
         }
 
+        public ActionResult ZonasMasAfectadas(string sector)
+        {
+            // Creo una lista1, lista2 para guardar cadenas
+            
+            var sectorLst = new List<string>();
+
+            //Hago query en la tabla reportes en donde obtengo los sectores en los que se han reportado situaciones y los guardo en una variable
+            var sectorQry = from a in db.Reportes
+                            select a.ubicacion;
+         
+            // Relleno la lista con los sectores no repetidos en los que se han hecho reportes
+            sectorLst.AddRange(sectorQry.Distinct());
+            ViewBag.sector = new SelectList(sectorLst);
+            // Guardo en variable los reportes del tipo y sector indicados, si se indico. Si no se indico retorno todo los reportes no resueltos
+
+            //var listaReportes = from a in db.Reportes
+            //                    where a.estatus == "1"
+            //                    select a;
+
+            List<Reporte> listaReportes = (from a in db.Reportes
+                                           where a.estatus == "1"
+                                           select a).ToList();
+
+
+       
+
+            // if (!String.IsNullOrEmpty(sector))
+            //{
+            //    listaReportes = (from  a in db.Reportes
+            //                    where a.ubicacion == sector &&
+            //                          a.estatus == "1"
+            //                         select a).ToList();
+
+            //}
+            
+            ViewBag.Latitud = 18.523471;
+            ViewBag.Longitud = -69.8746229;
+            ViewBag.coordenadas = listaReportes;
+
+                         
+            return View(listaReportes);
+        }
+
         // GET: Reportes/Details/5
         public ActionResult Details(int? id)
         {

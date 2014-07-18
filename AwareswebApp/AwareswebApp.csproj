@@ -186,6 +186,10 @@
     <Compile Include="Migrations\201407092151323_cambiosConsumosModel.Designer.cs">
       <DependentUpon>201407092151323_cambiosConsumosModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201407160939044_AgregandoSPZonasmasafectadas.cs" />
+    <Compile Include="Migrations\201407160939044_AgregandoSPZonasmasafectadas.Designer.cs">
+      <DependentUpon>201407160939044_AgregandoSPZonasmasafectadas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Colaborador.cs" />
@@ -266,6 +270,7 @@
     <Content Include="Views\Colaboradores\Menu.cshtml" />
     <Content Include="Views\Reportes\Menu.cshtml" />
     <Content Include="Views\Consumos\Menu.cshtml" />
+    <Content Include="Views\Reportes\zonasmasAfectadas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -292,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201407092151323_cambiosConsumosModel.resx">
       <DependentUpon>201407092151323_cambiosConsumosModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407160939044_AgregandoSPZonasmasafectadas.resx">
+      <DependentUpon>201407160939044_AgregandoSPZonasmasafectadas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
