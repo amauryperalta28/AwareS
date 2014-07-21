@@ -7,7 +7,7 @@
 
 <h2>Lista de Reportes</h2>
 
-<div id="map_canvas" style="width: 540px; height: 360px;border-style:solid;border-width:5px;border-color:ActiveBorder">  </div>
+<div id="map_canvas" style="width: 1040px; height: 560px;border-style:solid;border-width:5px;border-color:ActiveBorder">  </div>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -148,10 +148,18 @@
         };
 
         coordenada.forEach(function (entry) {
+            if(entry.estatus == 1)
+            {
+                var estatus = "No resuelto"
+            }
+            else
+            {
+                var estatus = "Resuelto"
+            }
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(entry.latitud, entry.longitud),
                 map: map,
-                title: entry.situacion,
+                title: entry.situacion + "\nColaborador: "+entry.userName + " \nEstatus: "+ estatus,
                 icon: detallesDeMarcadores(entry.situacion)
                 
             });
