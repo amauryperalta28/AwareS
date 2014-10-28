@@ -135,6 +135,7 @@ namespace AwareswebApp.Controllers
             }
             return View(reporte);
         }
+        
         /**
          * Envia una lista de reportes no resueltos en formato Json
          * 
@@ -149,33 +150,61 @@ namespace AwareswebApp.Controllers
 
             // Envio lista de reportes
 
-            return Json(n,JsonRequestBehavior.AllowGet);
+            return Json(n, JsonRequestBehavior.AllowGet);
+
+        }
+        /**
+         * Envia una lista de reportes de un usuario especificado
+         * 
+         * @return Lista de reportes no resueltos
+         */
+        [Route("Reportes/getReportsUser/{username}/{contrasena}")]
+        public JsonResult getReportsUser(string userName, string contrasena)
+        {
+            
+            //Verifico si el usuario y contrasena son validos
+            int usuario = (from a in db.Colaboradores
+                          where a.Password == contrasena &&
+                                a.nombreUsuario == userName
+                          select a).ToList().Count;
+            //Verifico si el usuario y contrasena son validos
+            if (usuario == 1)
+            {
+                var rep = from a in db.Reportes
+                               where a.userName == userName
+                               select a;
+                return Json(rep, JsonRequestBehavior.AllowGet);
+            }
+
+
+            return Json(0, JsonRequestBehavior.AllowGet);
             
         }
         
-        public void Crear(int numReporteUsr, string userName, string situacion, double longitud, double latitud, string sector)
+        public JsonResult Crear(int numReporteUsr, string userName, string situacion, double longitud, double latitud, string sector)
         {
-            /* Se verifica si hay un reporte del usuario con 
-             * el numReporteUsr que se quiere agegar al reporte*/
-            var reporte = (from n in db.Reportes
-                          where n.userName == userName &&
-                                n.numReporteUsr == numReporteUsr
-                          select n);
-           /**
-            * Se verifica si el colaborador que hace el reporte existe
-            */
-            //var colab = (from n in db.Colaboradores
-            //             where n.idColaborador == idUsuario
-            //             select n);
-            /**
-             *  Si no se encontro el reporte y el colaborador existe, crea uno nuevo
-             */
-            //if (reporte.Count() == 0 && colab.Count()>0 )
-            //{
-                Reporte report = new Reporte(numReporteUsr, userName, situacion, longitud, latitud,sector);
+            //Tomo el username y verifico si el colaborador existe
+
+            var colabExiste = (from a in db.Colaboradores
+                              where a.nombreUsuario == userName
+                              select a).ToList().Count;
+
+            if (colabExiste == 1)
+            {
+                Reporte report = new Reporte(numReporteUsr, userName, situacion, longitud, latitud, sector);
                 db.Reportes.Add(report);
                 db.SaveChanges();
-            //}
+                return Json(1, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(0, JsonRequestBehavior.AllowGet);
+            }
+
+            
+           
+                
+            
             
 
             
