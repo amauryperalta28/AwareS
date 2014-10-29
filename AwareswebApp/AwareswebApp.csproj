@@ -204,12 +204,29 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Theme\images\img01.gif" />
+    <Content Include="Content\Theme\images\img02.gif" />
+    <Content Include="Content\Theme\images\img03.jpg" />
+    <Content Include="Content\Theme\images\pic01.jpg" />
+    <Content Include="Content\Theme\images\pic02.jpg" />
+    <Content Include="Content\Theme\images\pic03.jpg" />
+    <Content Include="Content\Theme\images\slide01.jpg" />
+    <Content Include="Content\Theme\images\slide02.jpg" />
+    <Content Include="Content\Theme\images\slide03.jpg" />
+    <Content Include="Content\Theme\images\slide04.jpg" />
+    <Content Include="Content\Theme\images\slide05.jpg" />
+    <Content Include="Content\Theme\index.html" />
+    <Content Include="Content\Theme\jquery.dropotron-1.0.js" />
+    <Content Include="Content\Theme\jquery.slidertron-1.1.js" />
+    <Content Include="Content\Theme\license.txt" />
+    <Content Include="Content\Theme\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Theme\images\Thumbs.db" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -271,6 +288,7 @@
     <Content Include="Views\Reportes\Menu.cshtml" />
     <Content Include="Views\Consumos\Menu.cshtml" />
     <Content Include="Views\Reportes\zonasmasAfectadas.cshtml" />
+    <Content Include="Views\Shared\TestLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,9 +1,53 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-<div class="jumbotron">
-    <h1>AwareS</h1>
-    <p class="lead">Autonomous Water Report System</p>
-  
+<script type="text/javascript">
+	$(function() {
+		$('#menu > ul').dropotron({
+			mode: 'fade',
+			globalOffsetY: 11,
+			offsetY: -15
+		});
+		$('#slider').slidertron({
+			viewerSelector: '.viewer',
+			indicatorSelector: '.indicator span',
+			reelSelector: '.reel',
+			slidesSelector: '.slide',
+			speed: 'slow',
+			advanceDelay: 4000
+		});
+	});
+</script>
+<div id="slider">
+    <div class="viewer">
+        <div class="reel">
+            <div class="slide">
+                <img src="~/Content/Theme/images/slide01.jpg" alt="" />
+            </div>
+            <div class="slide">
+                <img src="~/Content/Theme/images/slide02.jpg" alt="" />
+            </div>
+            <div class="slide">
+                <img src="~/Content/Theme/images/slide03.jpg" alt="" />
+            </div>
+            <div class="slide">
+                <img src="~/Content/Theme/images/slide04.jpg" alt="" />
+            </div>
+            <div class="slide">
+                <img src="~/Content/Theme/images/slide05.jpg" alt="" />
+            </div>
+        </div>
+    </div>
+    <div class="indicator">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+    </div>
 </div>
+    <h1>AwareS</h1>
+<p>LA vida es linda</p>
+
+
+
