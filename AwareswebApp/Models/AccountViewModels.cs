@@ -33,16 +33,16 @@ namespace AwareswebApp.Models
                 this.Roles.Add(rvm);
             }
 
-            //// Set the Selected property to true for those roles for 
-            //// which the current user is a member:
-            //foreach (var userRole in user.Roles)
-            //{
+            // Set the Selected property to true for those roles for 
+            // which the current user is a member:
+            foreach (var userRole in user.Roles)
+            {
                 
                 
-            //    var checkUserRole =
-            //        this.Roles.Find(r => r.RoleName == userRole.UserId);
-            //    checkUserRole.Selected = true;
-            //}
+                var checkUserRole =
+                    this.Roles.Find(r => r.RoleName == userRole.Role.Name);
+                checkUserRole.Selected = true;
+            }
         }
 
         public string UserName { get; set; }
