@@ -9,8 +9,7 @@
 
 </head>
 <body>
-   
-   <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -25,19 +24,32 @@
                     <li>@Html.ActionLink("Reportes", "Menu", "Reportes")</li>
                     <li>@Html.ActionLink("Usuarios", "Menu", "Colaboradores")</li>
                     <li>@Html.ActionLink("Consumos", "Index", "Consumos")</li>
+<<<<<<< HEAD
                     <li>@Html.ActionLink("Roles", "Create","Roles")</li>
                                        
+=======
+                    @{ //<li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        } 
+                    
+                  
+                  @{//  <li>@Html.ActionLink("About", "About", "Home")</li>}
+                    }
+                  
+                   @{// <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                     
+                   }
+                    
+>>>>>>> parent of 43aa2d6... Se le quito un boton innecesario en la vista index de home
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div> 
-      
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - AwareS Application</p>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
 
