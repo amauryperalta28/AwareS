@@ -37,6 +37,11 @@ namespace AwareswebApp.Controllers
                 
             }
             
+            
+
+            
+
+            
             db.SaveChanges();
             
         }
@@ -44,34 +49,6 @@ namespace AwareswebApp.Controllers
         public ActionResult Menu()
         {
             return View();
-        }
-
-        /**
-         * Envia una lista de reportes de un usuario especificado
-         * 
-         * @return Lista de reportes no resueltos
-         */
-        [Route("Consumos/getConsumesUser/{username}/{contrasena}")]
-        public JsonResult getConsumesUser(string userName, string contrasena)
-        {
-
-            //Verifico si el usuario y contrasena son validos
-            int usuario = (from a in db.Colaboradores
-                           where a.Password == contrasena &&
-                                 a.nombreUsuario == userName
-                           select a).ToList().Count;
-            //Verifico si el usuario y contrasena son validos
-            if (usuario == 1)
-            {
-                var rep = from a in db.Colaboradores
-                          where a.nombreUsuario == userName
-                          select a;
-                return Json(rep, JsonRequestBehavior.AllowGet);
-            }
-
-
-            return Json(0, JsonRequestBehavior.AllowGet);
-
         }
         // GET: Consumos
         public ActionResult Index(string colabFilter)

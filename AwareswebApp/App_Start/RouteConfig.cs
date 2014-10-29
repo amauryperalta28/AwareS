@@ -12,7 +12,6 @@ namespace AwareswebApp
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapMvcAttributeRoutes();
 
             routes.MapRoute(
                 name: "Default",
@@ -22,13 +21,13 @@ namespace AwareswebApp
             routes.MapRoute(
                 name: "RecepcionConsumo",
                 url: "{controller}/{action}/{userNameColaborador}/{lecturaConsumo}/{tipoConsumo}/{Fecha}",
-                 defaults: new { controller = "Consumos", action = "Receive" }
+                 defaults: new { controller = "consumos", action = "Receive" }
             );
             routes.MapRoute(
                 name: "CreacionColab",
                 url: "{controller}/{action}/{usuario}/{email}/{password}"
             );
-
+                      
             routes.MapRoute(
                 name: "Creacionreportes",
                 url: "{controller}/{action}/{numReporteUsr}/{userName}/{situacion}/{longitud}/{latitud}/{sector}"
@@ -36,7 +35,7 @@ namespace AwareswebApp
             routes.MapRoute(
                  name: "ValidacionColaborador",
                  url: "{controller}/{action}/{username}/{password}",
-                 defaults: new { controller = "Colaboradores", action = "validate" }
+                 defaults: new { controller = "colaboradores", action = "validar" }
        );   
         }
     }
